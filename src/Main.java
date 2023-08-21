@@ -8,12 +8,25 @@ public class Main {
         String smaller = "abcdefghijklmnopqrstuvwxyz";
         String number = "0123456789";
         String special = "<>,.?/}]{[+_-)(*^&%$#@!~=";
-        String combination = bigger+smaller+special+number;
         System.out.println("Z ilu znaków ma się składać hasło?");
-        //int len=8;
         int len= scanner.nextInt();
+        System.out.println("Czy hasło ma zawierać duże litery? Tak/Nie");
+        boolean useBigger = scanner.next().equalsIgnoreCase("Tak");
+        System.out.println("Czy hasło ma zawierać liczby? Tak/Nie");
+        boolean useNumbers = scanner.next().equalsIgnoreCase("Tak");
+        System.out.println("Czy hasło ma zawierać znaki specjalne? Tak/Nie");
+        boolean useSpecial = scanner.next().equalsIgnoreCase("Tak");
+        String combination = smaller;
+        if (useBigger) {
+            combination+=bigger;
+        }
+        if (useNumbers) {
+            combination+=number;
+        }
+        if (useSpecial) {
+            combination+=special;
+        }
         char[] password= new char[len];
-        //char[] password= new char[len];
         Random random = new Random();
         for(int i=0; i<len;i++){
             password[i]=combination.charAt(random.nextInt(combination.length()));
